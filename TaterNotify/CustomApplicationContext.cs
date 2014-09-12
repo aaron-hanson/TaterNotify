@@ -34,7 +34,7 @@ namespace TaterNotify
 
         public CustomApplicationContext()
         {
-            WebClient.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36");
+            WebClient.Headers.Add(HttpRequestHeader.UserAgent, "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.103 Safari/537.36"); 
             _menuDisplayForm = new ToolStripMenuItem("Live Tater Standings");
             ToolStripMenuItem menuSettings = new ToolStripMenuItem("Settings");
             ToolStripSeparator menuSep = new ToolStripSeparator();
@@ -163,7 +163,9 @@ namespace TaterNotify
                     decimal taters = m.Groups[3].Length > 0 ? decimal.Parse(m.Groups[3].ToString()) : 1;
                     TaterStandingsRow taterStandingsRow = _standings.FirstOrDefault(x => x.Batters.Contains(playerId));
                     string owner = taterStandingsRow != null ? taterStandingsRow.Owner : "";
-                    latestTaters.Add(new Tater(playerId, batter, owner, taters));
+                    Tater existingTater = latestTaters.FirstOrDefault(x => x.PlayerId.Equals(playerId));
+                    if (existingTater != null) existingTater.Taters += taters;
+                    else latestTaters.Add(new Tater(playerId, batter, owner, taters));
                 }
             }
 
@@ -227,7 +229,7 @@ namespace TaterNotify
             foreach (TaterStandingsRow row in _standings.OrderByDescending(x => x.Taters + _taters.Where(y => y.Owner.Equals(x.Owner)).Sum(y => y.Taters)).ThenBy(x => x.Owner))
             {
                 decimal today = _taters.Where(x => x.Owner.Equals(row.Owner)).Sum(x => x.Taters);
-                buf.AppendLine((row.Taters + today) + " (" + today + ") " + row.Owner);
+                buf.AppendLine("(" + today + ") " + (row.Taters + today) + " - " + row.Owner);
             }
             return buf.ToString();
         }
