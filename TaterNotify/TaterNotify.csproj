@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\hansonw71\Users\ahanson\My Shared\TN\</PublishUrl>
+    <PublishUrl>\\WASHTENAWESOME\My Shared\_CODE_PUBLISHES\TaterNotify\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,9 +24,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ProductName>TaterNotify</ProductName>
     <PublisherName>STATS</PublisherName>
-    <MinimumRequiredVersion>1.0.1.46</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.1.47</MinimumRequiredVersion>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>47</ApplicationRevision>
+    <ApplicationRevision>48</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
